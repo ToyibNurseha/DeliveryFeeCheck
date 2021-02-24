@@ -9,7 +9,15 @@ part of 'location_req.dart';
 
 T _$identity<T>(T value) => value;
 LocationReq _$LocationReqFromJson(Map<String, dynamic> json) {
-  return ProvinceResponse.fromJson(json);
+  switch (json['runtimeType'] as String) {
+    case 'provinceResponse':
+      return ProvinceResponse.fromJson(json);
+    case 'cityResponse':
+      return CityResponse.fromJson(json);
+
+    default:
+      throw FallThroughError();
+  }
 }
 
 class _$LocationReqTearOff {
@@ -17,8 +25,18 @@ class _$LocationReqTearOff {
 
 // ignore: unused_element
   ProvinceResponse provinceResponse(List<dynamic> query,
-      ProvinceStatusData status, List<ProvinceResultData> results) {
+      LocationStatusData status, List<LocationResultData> results) {
     return ProvinceResponse(
+      query,
+      status,
+      results,
+    );
+  }
+
+// ignore: unused_element
+  CityResponse cityResponse(dynamic query, LocationStatusData status,
+      List<LocationResultData> results) {
+    return CityResponse(
       query,
       status,
       results,
@@ -30,29 +48,35 @@ class _$LocationReqTearOff {
 const $LocationReq = _$LocationReqTearOff();
 
 mixin _$LocationReq {
-  List<dynamic> get query;
-  ProvinceStatusData get status;
-  List<ProvinceResultData> get results;
+  LocationStatusData get status;
+  List<LocationResultData> get results;
 
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result provinceResponse(List<dynamic> query, ProvinceStatusData status,
-            List<ProvinceResultData> results),
+        Result provinceResponse(List<dynamic> query, LocationStatusData status,
+            List<LocationResultData> results),
+    @required
+        Result cityResponse(dynamic query, LocationStatusData status,
+            List<LocationResultData> results),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result provinceResponse(List<dynamic> query, ProvinceStatusData status,
-        List<ProvinceResultData> results),
+    Result provinceResponse(List<dynamic> query, LocationStatusData status,
+        List<LocationResultData> results),
+    Result cityResponse(dynamic query, LocationStatusData status,
+        List<LocationResultData> results),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result provinceResponse(ProvinceResponse value),
+    @required Result cityResponse(CityResponse value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result provinceResponse(ProvinceResponse value),
+    Result cityResponse(CityResponse value),
     @required Result orElse(),
   });
   Map<String, dynamic> toJson();
@@ -63,10 +87,7 @@ abstract class $LocationReqCopyWith<$Res> {
   factory $LocationReqCopyWith(
           LocationReq value, $Res Function(LocationReq) then) =
       _$LocationReqCopyWithImpl<$Res>;
-  $Res call(
-      {List<dynamic> query,
-      ProvinceStatusData status,
-      List<ProvinceResultData> results});
+  $Res call({LocationStatusData status, List<LocationResultData> results});
 }
 
 class _$LocationReqCopyWithImpl<$Res> implements $LocationReqCopyWith<$Res> {
@@ -78,16 +99,14 @@ class _$LocationReqCopyWithImpl<$Res> implements $LocationReqCopyWith<$Res> {
 
   @override
   $Res call({
-    Object query = freezed,
     Object status = freezed,
     Object results = freezed,
   }) {
     return _then(_value.copyWith(
-      query: query == freezed ? _value.query : query as List<dynamic>,
-      status: status == freezed ? _value.status : status as ProvinceStatusData,
+      status: status == freezed ? _value.status : status as LocationStatusData,
       results: results == freezed
           ? _value.results
-          : results as List<ProvinceResultData>,
+          : results as List<LocationResultData>,
     ));
   }
 }
@@ -100,8 +119,8 @@ abstract class $ProvinceResponseCopyWith<$Res>
   @override
   $Res call(
       {List<dynamic> query,
-      ProvinceStatusData status,
-      List<ProvinceResultData> results});
+      LocationStatusData status,
+      List<LocationResultData> results});
 }
 
 class _$ProvinceResponseCopyWithImpl<$Res>
@@ -122,8 +141,8 @@ class _$ProvinceResponseCopyWithImpl<$Res>
   }) {
     return _then(ProvinceResponse(
       query == freezed ? _value.query : query as List<dynamic>,
-      status == freezed ? _value.status : status as ProvinceStatusData,
-      results == freezed ? _value.results : results as List<ProvinceResultData>,
+      status == freezed ? _value.status : status as LocationStatusData,
+      results == freezed ? _value.results : results as List<LocationResultData>,
     ));
   }
 }
@@ -141,9 +160,9 @@ class _$ProvinceResponse implements ProvinceResponse {
   @override
   final List<dynamic> query;
   @override
-  final ProvinceStatusData status;
+  final LocationStatusData status;
   @override
-  final List<ProvinceResultData> results;
+  final List<LocationResultData> results;
 
   @override
   String toString() {
@@ -177,18 +196,24 @@ class _$ProvinceResponse implements ProvinceResponse {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result provinceResponse(List<dynamic> query, ProvinceStatusData status,
-            List<ProvinceResultData> results),
+        Result provinceResponse(List<dynamic> query, LocationStatusData status,
+            List<LocationResultData> results),
+    @required
+        Result cityResponse(dynamic query, LocationStatusData status,
+            List<LocationResultData> results),
   }) {
     assert(provinceResponse != null);
+    assert(cityResponse != null);
     return provinceResponse(query, status, results);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result provinceResponse(List<dynamic> query, ProvinceStatusData status,
-        List<ProvinceResultData> results),
+    Result provinceResponse(List<dynamic> query, LocationStatusData status,
+        List<LocationResultData> results),
+    Result cityResponse(dynamic query, LocationStatusData status,
+        List<LocationResultData> results),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -202,8 +227,10 @@ class _$ProvinceResponse implements ProvinceResponse {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result provinceResponse(ProvinceResponse value),
+    @required Result cityResponse(CityResponse value),
   }) {
     assert(provinceResponse != null);
+    assert(cityResponse != null);
     return provinceResponse(this);
   }
 
@@ -211,6 +238,7 @@ class _$ProvinceResponse implements ProvinceResponse {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result provinceResponse(ProvinceResponse value),
+    Result cityResponse(CityResponse value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -222,23 +250,181 @@ class _$ProvinceResponse implements ProvinceResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ProvinceResponseToJson(this);
+    return _$_$ProvinceResponseToJson(this)
+      ..['runtimeType'] = 'provinceResponse';
   }
 }
 
 abstract class ProvinceResponse implements LocationReq {
-  factory ProvinceResponse(List<dynamic> query, ProvinceStatusData status,
-      List<ProvinceResultData> results) = _$ProvinceResponse;
+  factory ProvinceResponse(List<dynamic> query, LocationStatusData status,
+      List<LocationResultData> results) = _$ProvinceResponse;
 
   factory ProvinceResponse.fromJson(Map<String, dynamic> json) =
       _$ProvinceResponse.fromJson;
 
-  @override
   List<dynamic> get query;
   @override
-  ProvinceStatusData get status;
+  LocationStatusData get status;
   @override
-  List<ProvinceResultData> get results;
+  List<LocationResultData> get results;
   @override
   $ProvinceResponseCopyWith<ProvinceResponse> get copyWith;
+}
+
+abstract class $CityResponseCopyWith<$Res>
+    implements $LocationReqCopyWith<$Res> {
+  factory $CityResponseCopyWith(
+          CityResponse value, $Res Function(CityResponse) then) =
+      _$CityResponseCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {dynamic query,
+      LocationStatusData status,
+      List<LocationResultData> results});
+}
+
+class _$CityResponseCopyWithImpl<$Res> extends _$LocationReqCopyWithImpl<$Res>
+    implements $CityResponseCopyWith<$Res> {
+  _$CityResponseCopyWithImpl(
+      CityResponse _value, $Res Function(CityResponse) _then)
+      : super(_value, (v) => _then(v as CityResponse));
+
+  @override
+  CityResponse get _value => super._value as CityResponse;
+
+  @override
+  $Res call({
+    Object query = freezed,
+    Object status = freezed,
+    Object results = freezed,
+  }) {
+    return _then(CityResponse(
+      query == freezed ? _value.query : query as dynamic,
+      status == freezed ? _value.status : status as LocationStatusData,
+      results == freezed ? _value.results : results as List<LocationResultData>,
+    ));
+  }
+}
+
+@JsonSerializable()
+class _$CityResponse implements CityResponse {
+  _$CityResponse(this.query, this.status, this.results)
+      : assert(query != null),
+        assert(status != null),
+        assert(results != null);
+
+  factory _$CityResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$CityResponseFromJson(json);
+
+  @override
+  final dynamic query;
+  @override
+  final LocationStatusData status;
+  @override
+  final List<LocationResultData> results;
+
+  @override
+  String toString() {
+    return 'LocationReq.cityResponse(query: $query, status: $status, results: $results)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CityResponse &&
+            (identical(other.query, query) ||
+                const DeepCollectionEquality().equals(other.query, query)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.results, results) ||
+                const DeepCollectionEquality().equals(other.results, results)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(query) ^
+      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(results);
+
+  @override
+  $CityResponseCopyWith<CityResponse> get copyWith =>
+      _$CityResponseCopyWithImpl<CityResponse>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required
+        Result provinceResponse(List<dynamic> query, LocationStatusData status,
+            List<LocationResultData> results),
+    @required
+        Result cityResponse(dynamic query, LocationStatusData status,
+            List<LocationResultData> results),
+  }) {
+    assert(provinceResponse != null);
+    assert(cityResponse != null);
+    return cityResponse(query, status, results);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result provinceResponse(List<dynamic> query, LocationStatusData status,
+        List<LocationResultData> results),
+    Result cityResponse(dynamic query, LocationStatusData status,
+        List<LocationResultData> results),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cityResponse != null) {
+      return cityResponse(query, status, results);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result provinceResponse(ProvinceResponse value),
+    @required Result cityResponse(CityResponse value),
+  }) {
+    assert(provinceResponse != null);
+    assert(cityResponse != null);
+    return cityResponse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result provinceResponse(ProvinceResponse value),
+    Result cityResponse(CityResponse value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cityResponse != null) {
+      return cityResponse(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$CityResponseToJson(this)..['runtimeType'] = 'cityResponse';
+  }
+}
+
+abstract class CityResponse implements LocationReq {
+  factory CityResponse(dynamic query, LocationStatusData status,
+      List<LocationResultData> results) = _$CityResponse;
+
+  factory CityResponse.fromJson(Map<String, dynamic> json) =
+      _$CityResponse.fromJson;
+
+  dynamic get query;
+  @override
+  LocationStatusData get status;
+  @override
+  List<LocationResultData> get results;
+  @override
+  $CityResponseCopyWith<CityResponse> get copyWith;
 }

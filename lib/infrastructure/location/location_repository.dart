@@ -28,7 +28,46 @@ class LocationRepository extends LocationInterface {
       switch (err.response.statusCode) {
         case 400:
           final errorData = err.response.data['rajaongkir']['status'];
-          final data = ProvinceStatusData.fromJson(errorData);
+          final data = LocationStatusData.fromJson(errorData);
+          print(data.description);
+          print(data.code);
+          return left(LocationFailure.badRequest(data.description));
+          break;
+        case 404:
+          return left(LocationFailure.notFound("404 Not Found"));
+        default:
+          print(err.response.data);
+          return left(LocationFailure.serverError());
+          break;
+      }
+    } catch (e) {
+      print(e.toString);
+      return left(e);
+    }
+  }
+
+  @override
+  Future<Either<LocationFailure, CityResponse>> getCityByProvinceId(
+      {String provinceId}) async {
+    dio = Dio();
+    Response response;
+    try {
+      response = await dio.get(
+        "https://api.rajaongkir.com/starter/city",
+        queryParameters: {"province": "$provinceId"},
+        options: Options(
+          headers: {"key": "5f62e60d74b3aefc7be2a62d46dd7089"},
+        ),
+      );
+      final _result = response.data['rajaongkir'];
+      final data = CityResponse.fromJson(_result);
+      print(data.status.code);
+      return right(data);
+    } on DioError catch (err) {
+      switch (err.response.statusCode) {
+        case 400:
+          final errorData = err.response.data['rajaongkir']['status'];
+          final data = LocationStatusData.fromJson(errorData);
           print(data.description);
           print(data.code);
           return left(LocationFailure.badRequest(data.description));

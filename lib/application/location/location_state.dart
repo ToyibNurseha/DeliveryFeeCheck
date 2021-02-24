@@ -7,4 +7,9 @@ abstract class LocationState with _$LocationState {
      @required bool onLoading,
      @required Option<Either<LocationFailure, ProvinceResponse>> dataProvince
   }) = _ProvinceDataOptions;
+
+  factory LocationState.cityDataOptions({
+     @required bool onLoading,
+     @required Option<Either<LocationFailure, CityResponse>> dataCity
+  }) = _CityDataOptions;
 }

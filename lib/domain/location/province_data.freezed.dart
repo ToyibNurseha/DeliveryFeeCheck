@@ -8,33 +8,42 @@ part of 'province_data.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-ProvinceData _$ProvinceDataFromJson(Map<String, dynamic> json) {
+LocationData _$LocationDataFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType'] as String) {
-    case 'provinceResultData':
-      return ProvinceResultData.fromJson(json);
-    case 'provinceStatusData':
-      return ProvinceStatusData.fromJson(json);
+    case 'locationResultData':
+      return LocationResultData.fromJson(json);
+    case 'locationStatusData':
+      return LocationStatusData.fromJson(json);
 
     default:
       throw FallThroughError();
   }
 }
 
-class _$ProvinceDataTearOff {
-  const _$ProvinceDataTearOff();
+class _$LocationDataTearOff {
+  const _$LocationDataTearOff();
 
 // ignore: unused_element
-  ProvinceResultData provinceResultData(
-      @JsonKey(name: 'province_id') String provinceId, String province) {
-    return ProvinceResultData(
-      provinceId,
-      province,
+  LocationResultData locationResultData(
+      {@JsonKey(name: 'province_id') String provinceId,
+      String province,
+      @JsonKey(name: 'city_id') String cityId,
+      String type,
+      @JsonKey(name: 'city_name') String cityName,
+      @JsonKey(name: 'postal_code') String postalCode}) {
+    return LocationResultData(
+      provinceId: provinceId,
+      province: province,
+      cityId: cityId,
+      type: type,
+      cityName: cityName,
+      postalCode: postalCode,
     );
   }
 
 // ignore: unused_element
-  ProvinceStatusData provinceStatusData(int code, String description) {
-    return ProvinceStatusData(
+  LocationStatusData locationStatusData(int code, String description) {
+    return LocationStatusData(
       code,
       description,
     );
@@ -42,147 +51,213 @@ class _$ProvinceDataTearOff {
 }
 
 // ignore: unused_element
-const $ProvinceData = _$ProvinceDataTearOff();
+const $LocationData = _$LocationDataTearOff();
 
-mixin _$ProvinceData {
+mixin _$LocationData {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result provinceResultData(
-            @JsonKey(name: 'province_id') String provinceId, String province),
-    @required Result provinceStatusData(int code, String description),
+        Result locationResultData(
+            @JsonKey(name: 'province_id') String provinceId,
+            String province,
+            @JsonKey(name: 'city_id') String cityId,
+            String type,
+            @JsonKey(name: 'city_name') String cityName,
+            @JsonKey(name: 'postal_code') String postalCode),
+    @required Result locationStatusData(int code, String description),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result provinceResultData(
-        @JsonKey(name: 'province_id') String provinceId, String province),
-    Result provinceStatusData(int code, String description),
+    Result locationResultData(
+        @JsonKey(name: 'province_id') String provinceId,
+        String province,
+        @JsonKey(name: 'city_id') String cityId,
+        String type,
+        @JsonKey(name: 'city_name') String cityName,
+        @JsonKey(name: 'postal_code') String postalCode),
+    Result locationStatusData(int code, String description),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result provinceResultData(ProvinceResultData value),
-    @required Result provinceStatusData(ProvinceStatusData value),
+    @required Result locationResultData(LocationResultData value),
+    @required Result locationStatusData(LocationStatusData value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result provinceResultData(ProvinceResultData value),
-    Result provinceStatusData(ProvinceStatusData value),
+    Result locationResultData(LocationResultData value),
+    Result locationStatusData(LocationStatusData value),
     @required Result orElse(),
   });
   Map<String, dynamic> toJson();
 }
 
-abstract class $ProvinceDataCopyWith<$Res> {
-  factory $ProvinceDataCopyWith(
-          ProvinceData value, $Res Function(ProvinceData) then) =
-      _$ProvinceDataCopyWithImpl<$Res>;
+abstract class $LocationDataCopyWith<$Res> {
+  factory $LocationDataCopyWith(
+          LocationData value, $Res Function(LocationData) then) =
+      _$LocationDataCopyWithImpl<$Res>;
 }
 
-class _$ProvinceDataCopyWithImpl<$Res> implements $ProvinceDataCopyWith<$Res> {
-  _$ProvinceDataCopyWithImpl(this._value, this._then);
+class _$LocationDataCopyWithImpl<$Res> implements $LocationDataCopyWith<$Res> {
+  _$LocationDataCopyWithImpl(this._value, this._then);
 
-  final ProvinceData _value;
+  final LocationData _value;
   // ignore: unused_field
-  final $Res Function(ProvinceData) _then;
+  final $Res Function(LocationData) _then;
 }
 
-abstract class $ProvinceResultDataCopyWith<$Res> {
-  factory $ProvinceResultDataCopyWith(
-          ProvinceResultData value, $Res Function(ProvinceResultData) then) =
-      _$ProvinceResultDataCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'province_id') String provinceId, String province});
+abstract class $LocationResultDataCopyWith<$Res> {
+  factory $LocationResultDataCopyWith(
+          LocationResultData value, $Res Function(LocationResultData) then) =
+      _$LocationResultDataCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'province_id') String provinceId,
+      String province,
+      @JsonKey(name: 'city_id') String cityId,
+      String type,
+      @JsonKey(name: 'city_name') String cityName,
+      @JsonKey(name: 'postal_code') String postalCode});
 }
 
-class _$ProvinceResultDataCopyWithImpl<$Res>
-    extends _$ProvinceDataCopyWithImpl<$Res>
-    implements $ProvinceResultDataCopyWith<$Res> {
-  _$ProvinceResultDataCopyWithImpl(
-      ProvinceResultData _value, $Res Function(ProvinceResultData) _then)
-      : super(_value, (v) => _then(v as ProvinceResultData));
+class _$LocationResultDataCopyWithImpl<$Res>
+    extends _$LocationDataCopyWithImpl<$Res>
+    implements $LocationResultDataCopyWith<$Res> {
+  _$LocationResultDataCopyWithImpl(
+      LocationResultData _value, $Res Function(LocationResultData) _then)
+      : super(_value, (v) => _then(v as LocationResultData));
 
   @override
-  ProvinceResultData get _value => super._value as ProvinceResultData;
+  LocationResultData get _value => super._value as LocationResultData;
 
   @override
   $Res call({
     Object provinceId = freezed,
     Object province = freezed,
+    Object cityId = freezed,
+    Object type = freezed,
+    Object cityName = freezed,
+    Object postalCode = freezed,
   }) {
-    return _then(ProvinceResultData(
-      provinceId == freezed ? _value.provinceId : provinceId as String,
-      province == freezed ? _value.province : province as String,
+    return _then(LocationResultData(
+      provinceId:
+          provinceId == freezed ? _value.provinceId : provinceId as String,
+      province: province == freezed ? _value.province : province as String,
+      cityId: cityId == freezed ? _value.cityId : cityId as String,
+      type: type == freezed ? _value.type : type as String,
+      cityName: cityName == freezed ? _value.cityName : cityName as String,
+      postalCode:
+          postalCode == freezed ? _value.postalCode : postalCode as String,
     ));
   }
 }
 
 @JsonSerializable()
-class _$ProvinceResultData implements ProvinceResultData {
-  _$ProvinceResultData(
-      @JsonKey(name: 'province_id') this.provinceId, this.province)
-      : assert(provinceId != null),
-        assert(province != null);
+class _$LocationResultData implements LocationResultData {
+  _$LocationResultData(
+      {@JsonKey(name: 'province_id') this.provinceId,
+      this.province,
+      @JsonKey(name: 'city_id') this.cityId,
+      this.type,
+      @JsonKey(name: 'city_name') this.cityName,
+      @JsonKey(name: 'postal_code') this.postalCode});
 
-  factory _$ProvinceResultData.fromJson(Map<String, dynamic> json) =>
-      _$_$ProvinceResultDataFromJson(json);
+  factory _$LocationResultData.fromJson(Map<String, dynamic> json) =>
+      _$_$LocationResultDataFromJson(json);
 
   @override
   @JsonKey(name: 'province_id')
   final String provinceId;
   @override
   final String province;
+  @override
+  @JsonKey(name: 'city_id')
+  final String cityId;
+  @override
+  final String type;
+  @override
+  @JsonKey(name: 'city_name')
+  final String cityName;
+  @override
+  @JsonKey(name: 'postal_code')
+  final String postalCode;
 
   @override
   String toString() {
-    return 'ProvinceData.provinceResultData(provinceId: $provinceId, province: $province)';
+    return 'LocationData.locationResultData(provinceId: $provinceId, province: $province, cityId: $cityId, type: $type, cityName: $cityName, postalCode: $postalCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ProvinceResultData &&
+        (other is LocationResultData &&
             (identical(other.provinceId, provinceId) ||
                 const DeepCollectionEquality()
                     .equals(other.provinceId, provinceId)) &&
             (identical(other.province, province) ||
                 const DeepCollectionEquality()
-                    .equals(other.province, province)));
+                    .equals(other.province, province)) &&
+            (identical(other.cityId, cityId) ||
+                const DeepCollectionEquality().equals(other.cityId, cityId)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.cityName, cityName) ||
+                const DeepCollectionEquality()
+                    .equals(other.cityName, cityName)) &&
+            (identical(other.postalCode, postalCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.postalCode, postalCode)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(provinceId) ^
-      const DeepCollectionEquality().hash(province);
+      const DeepCollectionEquality().hash(province) ^
+      const DeepCollectionEquality().hash(cityId) ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(cityName) ^
+      const DeepCollectionEquality().hash(postalCode);
 
   @override
-  $ProvinceResultDataCopyWith<ProvinceResultData> get copyWith =>
-      _$ProvinceResultDataCopyWithImpl<ProvinceResultData>(this, _$identity);
+  $LocationResultDataCopyWith<LocationResultData> get copyWith =>
+      _$LocationResultDataCopyWithImpl<LocationResultData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result provinceResultData(
-            @JsonKey(name: 'province_id') String provinceId, String province),
-    @required Result provinceStatusData(int code, String description),
+        Result locationResultData(
+            @JsonKey(name: 'province_id') String provinceId,
+            String province,
+            @JsonKey(name: 'city_id') String cityId,
+            String type,
+            @JsonKey(name: 'city_name') String cityName,
+            @JsonKey(name: 'postal_code') String postalCode),
+    @required Result locationStatusData(int code, String description),
   }) {
-    assert(provinceResultData != null);
-    assert(provinceStatusData != null);
-    return provinceResultData(provinceId, province);
+    assert(locationResultData != null);
+    assert(locationStatusData != null);
+    return locationResultData(
+        provinceId, province, cityId, type, cityName, postalCode);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result provinceResultData(
-        @JsonKey(name: 'province_id') String provinceId, String province),
-    Result provinceStatusData(int code, String description),
+    Result locationResultData(
+        @JsonKey(name: 'province_id') String provinceId,
+        String province,
+        @JsonKey(name: 'city_id') String cityId,
+        String type,
+        @JsonKey(name: 'city_name') String cityName,
+        @JsonKey(name: 'postal_code') String postalCode),
+    Result locationStatusData(int code, String description),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (provinceResultData != null) {
-      return provinceResultData(provinceId, province);
+    if (locationResultData != null) {
+      return locationResultData(
+          provinceId, province, cityId, type, cityName, postalCode);
     }
     return orElse();
   }
@@ -190,72 +265,83 @@ class _$ProvinceResultData implements ProvinceResultData {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result provinceResultData(ProvinceResultData value),
-    @required Result provinceStatusData(ProvinceStatusData value),
+    @required Result locationResultData(LocationResultData value),
+    @required Result locationStatusData(LocationStatusData value),
   }) {
-    assert(provinceResultData != null);
-    assert(provinceStatusData != null);
-    return provinceResultData(this);
+    assert(locationResultData != null);
+    assert(locationStatusData != null);
+    return locationResultData(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result provinceResultData(ProvinceResultData value),
-    Result provinceStatusData(ProvinceStatusData value),
+    Result locationResultData(LocationResultData value),
+    Result locationStatusData(LocationStatusData value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (provinceResultData != null) {
-      return provinceResultData(this);
+    if (locationResultData != null) {
+      return locationResultData(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ProvinceResultDataToJson(this)
-      ..['runtimeType'] = 'provinceResultData';
+    return _$_$LocationResultDataToJson(this)
+      ..['runtimeType'] = 'locationResultData';
   }
 }
 
-abstract class ProvinceResultData implements ProvinceData {
-  factory ProvinceResultData(
-          @JsonKey(name: 'province_id') String provinceId, String province) =
-      _$ProvinceResultData;
+abstract class LocationResultData implements LocationData {
+  factory LocationResultData(
+      {@JsonKey(name: 'province_id') String provinceId,
+      String province,
+      @JsonKey(name: 'city_id') String cityId,
+      String type,
+      @JsonKey(name: 'city_name') String cityName,
+      @JsonKey(name: 'postal_code') String postalCode}) = _$LocationResultData;
 
-  factory ProvinceResultData.fromJson(Map<String, dynamic> json) =
-      _$ProvinceResultData.fromJson;
+  factory LocationResultData.fromJson(Map<String, dynamic> json) =
+      _$LocationResultData.fromJson;
 
   @JsonKey(name: 'province_id')
   String get provinceId;
   String get province;
-  $ProvinceResultDataCopyWith<ProvinceResultData> get copyWith;
+  @JsonKey(name: 'city_id')
+  String get cityId;
+  String get type;
+  @JsonKey(name: 'city_name')
+  String get cityName;
+  @JsonKey(name: 'postal_code')
+  String get postalCode;
+  $LocationResultDataCopyWith<LocationResultData> get copyWith;
 }
 
-abstract class $ProvinceStatusDataCopyWith<$Res> {
-  factory $ProvinceStatusDataCopyWith(
-          ProvinceStatusData value, $Res Function(ProvinceStatusData) then) =
-      _$ProvinceStatusDataCopyWithImpl<$Res>;
+abstract class $LocationStatusDataCopyWith<$Res> {
+  factory $LocationStatusDataCopyWith(
+          LocationStatusData value, $Res Function(LocationStatusData) then) =
+      _$LocationStatusDataCopyWithImpl<$Res>;
   $Res call({int code, String description});
 }
 
-class _$ProvinceStatusDataCopyWithImpl<$Res>
-    extends _$ProvinceDataCopyWithImpl<$Res>
-    implements $ProvinceStatusDataCopyWith<$Res> {
-  _$ProvinceStatusDataCopyWithImpl(
-      ProvinceStatusData _value, $Res Function(ProvinceStatusData) _then)
-      : super(_value, (v) => _then(v as ProvinceStatusData));
+class _$LocationStatusDataCopyWithImpl<$Res>
+    extends _$LocationDataCopyWithImpl<$Res>
+    implements $LocationStatusDataCopyWith<$Res> {
+  _$LocationStatusDataCopyWithImpl(
+      LocationStatusData _value, $Res Function(LocationStatusData) _then)
+      : super(_value, (v) => _then(v as LocationStatusData));
 
   @override
-  ProvinceStatusData get _value => super._value as ProvinceStatusData;
+  LocationStatusData get _value => super._value as LocationStatusData;
 
   @override
   $Res call({
     Object code = freezed,
     Object description = freezed,
   }) {
-    return _then(ProvinceStatusData(
+    return _then(LocationStatusData(
       code == freezed ? _value.code : code as int,
       description == freezed ? _value.description : description as String,
     ));
@@ -263,13 +349,13 @@ class _$ProvinceStatusDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
-class _$ProvinceStatusData implements ProvinceStatusData {
-  _$ProvinceStatusData(this.code, this.description)
+class _$LocationStatusData implements LocationStatusData {
+  _$LocationStatusData(this.code, this.description)
       : assert(code != null),
         assert(description != null);
 
-  factory _$ProvinceStatusData.fromJson(Map<String, dynamic> json) =>
-      _$_$ProvinceStatusDataFromJson(json);
+  factory _$LocationStatusData.fromJson(Map<String, dynamic> json) =>
+      _$_$LocationStatusDataFromJson(json);
 
   @override
   final int code;
@@ -278,13 +364,13 @@ class _$ProvinceStatusData implements ProvinceStatusData {
 
   @override
   String toString() {
-    return 'ProvinceData.provinceStatusData(code: $code, description: $description)';
+    return 'LocationData.locationStatusData(code: $code, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ProvinceStatusData &&
+        (other is LocationStatusData &&
             (identical(other.code, code) ||
                 const DeepCollectionEquality().equals(other.code, code)) &&
             (identical(other.description, description) ||
@@ -299,33 +385,43 @@ class _$ProvinceStatusData implements ProvinceStatusData {
       const DeepCollectionEquality().hash(description);
 
   @override
-  $ProvinceStatusDataCopyWith<ProvinceStatusData> get copyWith =>
-      _$ProvinceStatusDataCopyWithImpl<ProvinceStatusData>(this, _$identity);
+  $LocationStatusDataCopyWith<LocationStatusData> get copyWith =>
+      _$LocationStatusDataCopyWithImpl<LocationStatusData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result provinceResultData(
-            @JsonKey(name: 'province_id') String provinceId, String province),
-    @required Result provinceStatusData(int code, String description),
+        Result locationResultData(
+            @JsonKey(name: 'province_id') String provinceId,
+            String province,
+            @JsonKey(name: 'city_id') String cityId,
+            String type,
+            @JsonKey(name: 'city_name') String cityName,
+            @JsonKey(name: 'postal_code') String postalCode),
+    @required Result locationStatusData(int code, String description),
   }) {
-    assert(provinceResultData != null);
-    assert(provinceStatusData != null);
-    return provinceStatusData(code, description);
+    assert(locationResultData != null);
+    assert(locationStatusData != null);
+    return locationStatusData(code, description);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result provinceResultData(
-        @JsonKey(name: 'province_id') String provinceId, String province),
-    Result provinceStatusData(int code, String description),
+    Result locationResultData(
+        @JsonKey(name: 'province_id') String provinceId,
+        String province,
+        @JsonKey(name: 'city_id') String cityId,
+        String type,
+        @JsonKey(name: 'city_name') String cityName,
+        @JsonKey(name: 'postal_code') String postalCode),
+    Result locationStatusData(int code, String description),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (provinceStatusData != null) {
-      return provinceStatusData(code, description);
+    if (locationStatusData != null) {
+      return locationStatusData(code, description);
     }
     return orElse();
   }
@@ -333,43 +429,43 @@ class _$ProvinceStatusData implements ProvinceStatusData {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result provinceResultData(ProvinceResultData value),
-    @required Result provinceStatusData(ProvinceStatusData value),
+    @required Result locationResultData(LocationResultData value),
+    @required Result locationStatusData(LocationStatusData value),
   }) {
-    assert(provinceResultData != null);
-    assert(provinceStatusData != null);
-    return provinceStatusData(this);
+    assert(locationResultData != null);
+    assert(locationStatusData != null);
+    return locationStatusData(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result provinceResultData(ProvinceResultData value),
-    Result provinceStatusData(ProvinceStatusData value),
+    Result locationResultData(LocationResultData value),
+    Result locationStatusData(LocationStatusData value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (provinceStatusData != null) {
-      return provinceStatusData(this);
+    if (locationStatusData != null) {
+      return locationStatusData(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ProvinceStatusDataToJson(this)
-      ..['runtimeType'] = 'provinceStatusData';
+    return _$_$LocationStatusDataToJson(this)
+      ..['runtimeType'] = 'locationStatusData';
   }
 }
 
-abstract class ProvinceStatusData implements ProvinceData {
-  factory ProvinceStatusData(int code, String description) =
-      _$ProvinceStatusData;
+abstract class LocationStatusData implements LocationData {
+  factory LocationStatusData(int code, String description) =
+      _$LocationStatusData;
 
-  factory ProvinceStatusData.fromJson(Map<String, dynamic> json) =
-      _$ProvinceStatusData.fromJson;
+  factory LocationStatusData.fromJson(Map<String, dynamic> json) =
+      _$LocationStatusData.fromJson;
 
   int get code;
   String get description;
-  $ProvinceStatusDataCopyWith<ProvinceStatusData> get copyWith;
+  $LocationStatusDataCopyWith<LocationStatusData> get copyWith;
 }
