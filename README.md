@@ -4,7 +4,7 @@ An example of how to use BLOC pattern by GET [Rajaongkir](https://rajaongkir.com
 
 ## Demo
 
-[<img src="https://img.youtube.com/vi/FTIXj5615bQ/maxresdefault.jpg" width="50%">](https://youtu.be/FTIXj5615bQ)
+![deliverycheck](https://user-images.githubusercontent.com/34620150/110238477-71f8d980-7f74-11eb-9aa1-6031e8c469f7.png)
 
 
 ### DDD (Domain-Driven-Design)
