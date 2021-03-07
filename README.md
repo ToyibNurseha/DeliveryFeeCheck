@@ -2,6 +2,12 @@
 
 An example of how to use BLOC pattern by GET [Rajaongkir](https://rajaongkir.com) REST API
 
+##Demo
+
+
+https://user-images.githubusercontent.com/34620150/110237963-6e178800-7f71-11eb-9031-60fda0d39c22.mp4
+
+
 ### DDD (Domain-Driven-Design)
 ##### Presentation
 This layer is all widgets (UI)
