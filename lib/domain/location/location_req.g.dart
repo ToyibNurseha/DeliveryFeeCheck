@@ -47,3 +47,23 @@ Map<String, dynamic> _$_$CityResponseToJson(_$CityResponse instance) =>
       'status': instance.status,
       'results': instance.results,
     };
+
+_$CostResponse _$_$CostResponseFromJson(Map<String, dynamic> json) {
+  return _$CostResponse(
+    json['query'],
+    json['status'] == null
+        ? null
+        : LocationStatusData.fromJson(json['status'] as Map<String, dynamic>),
+    (json['results'] as List)
+        ?.map((e) =>
+            e == null ? null : CostsResults.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$_$CostResponseToJson(_$CostResponse instance) =>
+    <String, dynamic>{
+      'query': instance.query,
+      'status': instance.status,
+      'results': instance.results,
+    };

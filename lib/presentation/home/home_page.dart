@@ -11,14 +11,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Raja Ongkir Test"),),
-        body: Column(
+      appBar: AppBar(
+        title: Text("Delivery Fee Check"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RaisedButton(onPressed: () {
-              ExtendedNavigator.of(context).push(r.Routes.locationPage);
-            }, child: Text("Push me"),)
+            Container(
+              height: 150,
+              width: 150,
+              child: Image.asset(
+                "assets/images/delivery_truck.png",
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                ExtendedNavigator.of(context).push(r.Routes.locationPage);
+              },
+              child: Text("Check Delivery"),
+            )
           ],
         ),
+      ),
     );
   }
 }

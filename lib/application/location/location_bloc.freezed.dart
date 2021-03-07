@@ -13,15 +13,29 @@ class _$LocationEventTearOff {
   const _$LocationEventTearOff();
 
 // ignore: unused_element
-  GetLocationCity getLocationCity({@required String provinceId}) {
-    return GetLocationCity(
+  _GetLocationCity getLocationCity({@required String provinceId}) {
+    return _GetLocationCity(
       provinceId: provinceId,
     );
   }
 
 // ignore: unused_element
-  GetLocationProvince getLocationProvince() {
-    return GetLocationProvince();
+  _GetLocationProvince getLocationProvince() {
+    return _GetLocationProvince();
+  }
+
+// ignore: unused_element
+  _GetCost getCost(
+      {@required LocationResultData fromData,
+      @required LocationResultData toData,
+      @required int weight,
+      @required String courier}) {
+    return _GetCost(
+      fromData: fromData,
+      toData: toData,
+      weight: weight,
+      courier: courier,
+    );
   }
 }
 
@@ -33,22 +47,29 @@ mixin _$LocationEvent {
   Result when<Result extends Object>({
     @required Result getLocationCity(String provinceId),
     @required Result getLocationProvince(),
+    @required
+        Result getCost(LocationResultData fromData, LocationResultData toData,
+            int weight, String courier),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getLocationCity(String provinceId),
     Result getLocationProvince(),
+    Result getCost(LocationResultData fromData, LocationResultData toData,
+        int weight, String courier),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationCity(GetLocationCity value),
-    @required Result getLocationProvince(GetLocationProvince value),
+    @required Result getLocationCity(_GetLocationCity value),
+    @required Result getLocationProvince(_GetLocationProvince value),
+    @required Result getCost(_GetCost value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationCity(GetLocationCity value),
-    Result getLocationProvince(GetLocationProvince value),
+    Result getLocationCity(_GetLocationCity value),
+    Result getLocationProvince(_GetLocationProvince value),
+    Result getCost(_GetCost value),
     @required Result orElse(),
   });
 }
@@ -68,36 +89,36 @@ class _$LocationEventCopyWithImpl<$Res>
   final $Res Function(LocationEvent) _then;
 }
 
-abstract class $GetLocationCityCopyWith<$Res> {
-  factory $GetLocationCityCopyWith(
-          GetLocationCity value, $Res Function(GetLocationCity) then) =
-      _$GetLocationCityCopyWithImpl<$Res>;
+abstract class _$GetLocationCityCopyWith<$Res> {
+  factory _$GetLocationCityCopyWith(
+          _GetLocationCity value, $Res Function(_GetLocationCity) then) =
+      __$GetLocationCityCopyWithImpl<$Res>;
   $Res call({String provinceId});
 }
 
-class _$GetLocationCityCopyWithImpl<$Res>
+class __$GetLocationCityCopyWithImpl<$Res>
     extends _$LocationEventCopyWithImpl<$Res>
-    implements $GetLocationCityCopyWith<$Res> {
-  _$GetLocationCityCopyWithImpl(
-      GetLocationCity _value, $Res Function(GetLocationCity) _then)
-      : super(_value, (v) => _then(v as GetLocationCity));
+    implements _$GetLocationCityCopyWith<$Res> {
+  __$GetLocationCityCopyWithImpl(
+      _GetLocationCity _value, $Res Function(_GetLocationCity) _then)
+      : super(_value, (v) => _then(v as _GetLocationCity));
 
   @override
-  GetLocationCity get _value => super._value as GetLocationCity;
+  _GetLocationCity get _value => super._value as _GetLocationCity;
 
   @override
   $Res call({
     Object provinceId = freezed,
   }) {
-    return _then(GetLocationCity(
+    return _then(_GetLocationCity(
       provinceId:
           provinceId == freezed ? _value.provinceId : provinceId as String,
     ));
   }
 }
 
-class _$GetLocationCity implements GetLocationCity {
-  _$GetLocationCity({@required this.provinceId}) : assert(provinceId != null);
+class _$_GetLocationCity implements _GetLocationCity {
+  _$_GetLocationCity({@required this.provinceId}) : assert(provinceId != null);
 
   @override
   final String provinceId;
@@ -110,7 +131,7 @@ class _$GetLocationCity implements GetLocationCity {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetLocationCity &&
+        (other is _GetLocationCity &&
             (identical(other.provinceId, provinceId) ||
                 const DeepCollectionEquality()
                     .equals(other.provinceId, provinceId)));
@@ -121,17 +142,21 @@ class _$GetLocationCity implements GetLocationCity {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(provinceId);
 
   @override
-  $GetLocationCityCopyWith<GetLocationCity> get copyWith =>
-      _$GetLocationCityCopyWithImpl<GetLocationCity>(this, _$identity);
+  _$GetLocationCityCopyWith<_GetLocationCity> get copyWith =>
+      __$GetLocationCityCopyWithImpl<_GetLocationCity>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getLocationCity(String provinceId),
     @required Result getLocationProvince(),
+    @required
+        Result getCost(LocationResultData fromData, LocationResultData toData,
+            int weight, String courier),
   }) {
     assert(getLocationCity != null);
     assert(getLocationProvince != null);
+    assert(getCost != null);
     return getLocationCity(provinceId);
   }
 
@@ -140,6 +165,8 @@ class _$GetLocationCity implements GetLocationCity {
   Result maybeWhen<Result extends Object>({
     Result getLocationCity(String provinceId),
     Result getLocationProvince(),
+    Result getCost(LocationResultData fromData, LocationResultData toData,
+        int weight, String courier),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -152,19 +179,22 @@ class _$GetLocationCity implements GetLocationCity {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationCity(GetLocationCity value),
-    @required Result getLocationProvince(GetLocationProvince value),
+    @required Result getLocationCity(_GetLocationCity value),
+    @required Result getLocationProvince(_GetLocationProvince value),
+    @required Result getCost(_GetCost value),
   }) {
     assert(getLocationCity != null);
     assert(getLocationProvince != null);
+    assert(getCost != null);
     return getLocationCity(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationCity(GetLocationCity value),
-    Result getLocationProvince(GetLocationProvince value),
+    Result getLocationCity(_GetLocationCity value),
+    Result getLocationProvince(_GetLocationProvince value),
+    Result getCost(_GetCost value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -175,32 +205,32 @@ class _$GetLocationCity implements GetLocationCity {
   }
 }
 
-abstract class GetLocationCity implements LocationEvent {
-  factory GetLocationCity({@required String provinceId}) = _$GetLocationCity;
+abstract class _GetLocationCity implements LocationEvent {
+  factory _GetLocationCity({@required String provinceId}) = _$_GetLocationCity;
 
   String get provinceId;
-  $GetLocationCityCopyWith<GetLocationCity> get copyWith;
+  _$GetLocationCityCopyWith<_GetLocationCity> get copyWith;
 }
 
-abstract class $GetLocationProvinceCopyWith<$Res> {
-  factory $GetLocationProvinceCopyWith(
-          GetLocationProvince value, $Res Function(GetLocationProvince) then) =
-      _$GetLocationProvinceCopyWithImpl<$Res>;
+abstract class _$GetLocationProvinceCopyWith<$Res> {
+  factory _$GetLocationProvinceCopyWith(_GetLocationProvince value,
+          $Res Function(_GetLocationProvince) then) =
+      __$GetLocationProvinceCopyWithImpl<$Res>;
 }
 
-class _$GetLocationProvinceCopyWithImpl<$Res>
+class __$GetLocationProvinceCopyWithImpl<$Res>
     extends _$LocationEventCopyWithImpl<$Res>
-    implements $GetLocationProvinceCopyWith<$Res> {
-  _$GetLocationProvinceCopyWithImpl(
-      GetLocationProvince _value, $Res Function(GetLocationProvince) _then)
-      : super(_value, (v) => _then(v as GetLocationProvince));
+    implements _$GetLocationProvinceCopyWith<$Res> {
+  __$GetLocationProvinceCopyWithImpl(
+      _GetLocationProvince _value, $Res Function(_GetLocationProvince) _then)
+      : super(_value, (v) => _then(v as _GetLocationProvince));
 
   @override
-  GetLocationProvince get _value => super._value as GetLocationProvince;
+  _GetLocationProvince get _value => super._value as _GetLocationProvince;
 }
 
-class _$GetLocationProvince implements GetLocationProvince {
-  _$GetLocationProvince();
+class _$_GetLocationProvince implements _GetLocationProvince {
+  _$_GetLocationProvince();
 
   @override
   String toString() {
@@ -209,7 +239,7 @@ class _$GetLocationProvince implements GetLocationProvince {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetLocationProvince);
+    return identical(this, other) || (other is _GetLocationProvince);
   }
 
   @override
@@ -220,9 +250,13 @@ class _$GetLocationProvince implements GetLocationProvince {
   Result when<Result extends Object>({
     @required Result getLocationCity(String provinceId),
     @required Result getLocationProvince(),
+    @required
+        Result getCost(LocationResultData fromData, LocationResultData toData,
+            int weight, String courier),
   }) {
     assert(getLocationCity != null);
     assert(getLocationProvince != null);
+    assert(getCost != null);
     return getLocationProvince();
   }
 
@@ -231,6 +265,8 @@ class _$GetLocationProvince implements GetLocationProvince {
   Result maybeWhen<Result extends Object>({
     Result getLocationCity(String provinceId),
     Result getLocationProvince(),
+    Result getCost(LocationResultData fromData, LocationResultData toData,
+        int weight, String courier),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -243,19 +279,22 @@ class _$GetLocationProvince implements GetLocationProvince {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationCity(GetLocationCity value),
-    @required Result getLocationProvince(GetLocationProvince value),
+    @required Result getLocationCity(_GetLocationCity value),
+    @required Result getLocationProvince(_GetLocationProvince value),
+    @required Result getCost(_GetCost value),
   }) {
     assert(getLocationCity != null);
     assert(getLocationProvince != null);
+    assert(getCost != null);
     return getLocationProvince(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationCity(GetLocationCity value),
-    Result getLocationProvince(GetLocationProvince value),
+    Result getLocationCity(_GetLocationCity value),
+    Result getLocationProvince(_GetLocationProvince value),
+    Result getCost(_GetCost value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -266,8 +305,170 @@ class _$GetLocationProvince implements GetLocationProvince {
   }
 }
 
-abstract class GetLocationProvince implements LocationEvent {
-  factory GetLocationProvince() = _$GetLocationProvince;
+abstract class _GetLocationProvince implements LocationEvent {
+  factory _GetLocationProvince() = _$_GetLocationProvince;
+}
+
+abstract class _$GetCostCopyWith<$Res> {
+  factory _$GetCostCopyWith(_GetCost value, $Res Function(_GetCost) then) =
+      __$GetCostCopyWithImpl<$Res>;
+  $Res call(
+      {LocationResultData fromData,
+      LocationResultData toData,
+      int weight,
+      String courier});
+}
+
+class __$GetCostCopyWithImpl<$Res> extends _$LocationEventCopyWithImpl<$Res>
+    implements _$GetCostCopyWith<$Res> {
+  __$GetCostCopyWithImpl(_GetCost _value, $Res Function(_GetCost) _then)
+      : super(_value, (v) => _then(v as _GetCost));
+
+  @override
+  _GetCost get _value => super._value as _GetCost;
+
+  @override
+  $Res call({
+    Object fromData = freezed,
+    Object toData = freezed,
+    Object weight = freezed,
+    Object courier = freezed,
+  }) {
+    return _then(_GetCost(
+      fromData: fromData == freezed
+          ? _value.fromData
+          : fromData as LocationResultData,
+      toData: toData == freezed ? _value.toData : toData as LocationResultData,
+      weight: weight == freezed ? _value.weight : weight as int,
+      courier: courier == freezed ? _value.courier : courier as String,
+    ));
+  }
+}
+
+class _$_GetCost implements _GetCost {
+  _$_GetCost(
+      {@required this.fromData,
+      @required this.toData,
+      @required this.weight,
+      @required this.courier})
+      : assert(fromData != null),
+        assert(toData != null),
+        assert(weight != null),
+        assert(courier != null);
+
+  @override
+  final LocationResultData fromData;
+  @override
+  final LocationResultData toData;
+  @override
+  final int weight;
+  @override
+  final String courier;
+
+  @override
+  String toString() {
+    return 'LocationEvent.getCost(fromData: $fromData, toData: $toData, weight: $weight, courier: $courier)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetCost &&
+            (identical(other.fromData, fromData) ||
+                const DeepCollectionEquality()
+                    .equals(other.fromData, fromData)) &&
+            (identical(other.toData, toData) ||
+                const DeepCollectionEquality().equals(other.toData, toData)) &&
+            (identical(other.weight, weight) ||
+                const DeepCollectionEquality().equals(other.weight, weight)) &&
+            (identical(other.courier, courier) ||
+                const DeepCollectionEquality().equals(other.courier, courier)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(fromData) ^
+      const DeepCollectionEquality().hash(toData) ^
+      const DeepCollectionEquality().hash(weight) ^
+      const DeepCollectionEquality().hash(courier);
+
+  @override
+  _$GetCostCopyWith<_GetCost> get copyWith =>
+      __$GetCostCopyWithImpl<_GetCost>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getLocationCity(String provinceId),
+    @required Result getLocationProvince(),
+    @required
+        Result getCost(LocationResultData fromData, LocationResultData toData,
+            int weight, String courier),
+  }) {
+    assert(getLocationCity != null);
+    assert(getLocationProvince != null);
+    assert(getCost != null);
+    return getCost(fromData, toData, weight, courier);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getLocationCity(String provinceId),
+    Result getLocationProvince(),
+    Result getCost(LocationResultData fromData, LocationResultData toData,
+        int weight, String courier),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getCost != null) {
+      return getCost(fromData, toData, weight, courier);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getLocationCity(_GetLocationCity value),
+    @required Result getLocationProvince(_GetLocationProvince value),
+    @required Result getCost(_GetCost value),
+  }) {
+    assert(getLocationCity != null);
+    assert(getLocationProvince != null);
+    assert(getCost != null);
+    return getCost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getLocationCity(_GetLocationCity value),
+    Result getLocationProvince(_GetLocationProvince value),
+    Result getCost(_GetCost value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getCost != null) {
+      return getCost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCost implements LocationEvent {
+  factory _GetCost(
+      {@required LocationResultData fromData,
+      @required LocationResultData toData,
+      @required int weight,
+      @required String courier}) = _$_GetCost;
+
+  LocationResultData get fromData;
+  LocationResultData get toData;
+  int get weight;
+  String get courier;
+  _$GetCostCopyWith<_GetCost> get copyWith;
 }
 
 class _$LocationStateTearOff {
@@ -299,6 +500,16 @@ class _$LocationStateTearOff {
       dataCity: dataCity,
     );
   }
+
+// ignore: unused_element
+  _CostsDataOptions costsDataOptions(
+      {@required bool onLoading,
+      @required Option<Either<LocationFailure, CostResponse>> costData}) {
+    return _CostsDataOptions(
+      onLoading: onLoading,
+      costData: costData,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -314,6 +525,9 @@ mixin _$LocationState {
     @required
         Result cityDataOptions(bool onLoading,
             Option<Either<LocationFailure, CityResponse>> dataCity),
+    @required
+        Result costsDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CostResponse>> costData),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -322,6 +536,8 @@ mixin _$LocationState {
         Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     Result cityDataOptions(
         bool onLoading, Option<Either<LocationFailure, CityResponse>> dataCity),
+    Result costsDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CostResponse>> costData),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -329,12 +545,14 @@ mixin _$LocationState {
     @required Result initial(_Initial value),
     @required Result provinceDataOptions(_ProvinceDataOptions value),
     @required Result cityDataOptions(_CityDataOptions value),
+    @required Result costsDataOptions(_CostsDataOptions value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result provinceDataOptions(_ProvinceDataOptions value),
     Result cityDataOptions(_CityDataOptions value),
+    Result costsDataOptions(_CostsDataOptions value),
     @required Result orElse(),
   });
 }
@@ -394,10 +612,14 @@ class _$_Initial implements _Initial {
     @required
         Result cityDataOptions(bool onLoading,
             Option<Either<LocationFailure, CityResponse>> dataCity),
+    @required
+        Result costsDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CostResponse>> costData),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return initial();
   }
 
@@ -409,6 +631,8 @@ class _$_Initial implements _Initial {
         Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     Result cityDataOptions(
         bool onLoading, Option<Either<LocationFailure, CityResponse>> dataCity),
+    Result costsDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CostResponse>> costData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -424,10 +648,12 @@ class _$_Initial implements _Initial {
     @required Result initial(_Initial value),
     @required Result provinceDataOptions(_ProvinceDataOptions value),
     @required Result cityDataOptions(_CityDataOptions value),
+    @required Result costsDataOptions(_CostsDataOptions value),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return initial(this);
   }
 
@@ -437,6 +663,7 @@ class _$_Initial implements _Initial {
     Result initial(_Initial value),
     Result provinceDataOptions(_ProvinceDataOptions value),
     Result cityDataOptions(_CityDataOptions value),
+    Result costsDataOptions(_CostsDataOptions value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -533,10 +760,14 @@ class _$_ProvinceDataOptions implements _ProvinceDataOptions {
     @required
         Result cityDataOptions(bool onLoading,
             Option<Either<LocationFailure, CityResponse>> dataCity),
+    @required
+        Result costsDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CostResponse>> costData),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return provinceDataOptions(onLoading, dataProvince);
   }
 
@@ -548,6 +779,8 @@ class _$_ProvinceDataOptions implements _ProvinceDataOptions {
         Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     Result cityDataOptions(
         bool onLoading, Option<Either<LocationFailure, CityResponse>> dataCity),
+    Result costsDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CostResponse>> costData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -563,10 +796,12 @@ class _$_ProvinceDataOptions implements _ProvinceDataOptions {
     @required Result initial(_Initial value),
     @required Result provinceDataOptions(_ProvinceDataOptions value),
     @required Result cityDataOptions(_CityDataOptions value),
+    @required Result costsDataOptions(_CostsDataOptions value),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return provinceDataOptions(this);
   }
 
@@ -576,6 +811,7 @@ class _$_ProvinceDataOptions implements _ProvinceDataOptions {
     Result initial(_Initial value),
     Result provinceDataOptions(_ProvinceDataOptions value),
     Result cityDataOptions(_CityDataOptions value),
+    Result costsDataOptions(_CostsDataOptions value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -678,10 +914,14 @@ class _$_CityDataOptions implements _CityDataOptions {
     @required
         Result cityDataOptions(bool onLoading,
             Option<Either<LocationFailure, CityResponse>> dataCity),
+    @required
+        Result costsDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CostResponse>> costData),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return cityDataOptions(onLoading, dataCity);
   }
 
@@ -693,6 +933,8 @@ class _$_CityDataOptions implements _CityDataOptions {
         Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     Result cityDataOptions(
         bool onLoading, Option<Either<LocationFailure, CityResponse>> dataCity),
+    Result costsDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CostResponse>> costData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -708,10 +950,12 @@ class _$_CityDataOptions implements _CityDataOptions {
     @required Result initial(_Initial value),
     @required Result provinceDataOptions(_ProvinceDataOptions value),
     @required Result cityDataOptions(_CityDataOptions value),
+    @required Result costsDataOptions(_CostsDataOptions value),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
     assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
     return cityDataOptions(this);
   }
 
@@ -721,6 +965,7 @@ class _$_CityDataOptions implements _CityDataOptions {
     Result initial(_Initial value),
     Result provinceDataOptions(_ProvinceDataOptions value),
     Result cityDataOptions(_CityDataOptions value),
+    Result costsDataOptions(_CostsDataOptions value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -740,4 +985,156 @@ abstract class _CityDataOptions implements LocationState {
   bool get onLoading;
   Option<Either<LocationFailure, CityResponse>> get dataCity;
   _$CityDataOptionsCopyWith<_CityDataOptions> get copyWith;
+}
+
+abstract class _$CostsDataOptionsCopyWith<$Res> {
+  factory _$CostsDataOptionsCopyWith(
+          _CostsDataOptions value, $Res Function(_CostsDataOptions) then) =
+      __$CostsDataOptionsCopyWithImpl<$Res>;
+  $Res call(
+      {bool onLoading, Option<Either<LocationFailure, CostResponse>> costData});
+}
+
+class __$CostsDataOptionsCopyWithImpl<$Res>
+    extends _$LocationStateCopyWithImpl<$Res>
+    implements _$CostsDataOptionsCopyWith<$Res> {
+  __$CostsDataOptionsCopyWithImpl(
+      _CostsDataOptions _value, $Res Function(_CostsDataOptions) _then)
+      : super(_value, (v) => _then(v as _CostsDataOptions));
+
+  @override
+  _CostsDataOptions get _value => super._value as _CostsDataOptions;
+
+  @override
+  $Res call({
+    Object onLoading = freezed,
+    Object costData = freezed,
+  }) {
+    return _then(_CostsDataOptions(
+      onLoading: onLoading == freezed ? _value.onLoading : onLoading as bool,
+      costData: costData == freezed
+          ? _value.costData
+          : costData as Option<Either<LocationFailure, CostResponse>>,
+    ));
+  }
+}
+
+class _$_CostsDataOptions implements _CostsDataOptions {
+  _$_CostsDataOptions({@required this.onLoading, @required this.costData})
+      : assert(onLoading != null),
+        assert(costData != null);
+
+  @override
+  final bool onLoading;
+  @override
+  final Option<Either<LocationFailure, CostResponse>> costData;
+
+  @override
+  String toString() {
+    return 'LocationState.costsDataOptions(onLoading: $onLoading, costData: $costData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CostsDataOptions &&
+            (identical(other.onLoading, onLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.onLoading, onLoading)) &&
+            (identical(other.costData, costData) ||
+                const DeepCollectionEquality()
+                    .equals(other.costData, costData)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(onLoading) ^
+      const DeepCollectionEquality().hash(costData);
+
+  @override
+  _$CostsDataOptionsCopyWith<_CostsDataOptions> get copyWith =>
+      __$CostsDataOptionsCopyWithImpl<_CostsDataOptions>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required
+        Result provinceDataOptions(bool onLoading,
+            Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
+    @required
+        Result cityDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CityResponse>> dataCity),
+    @required
+        Result costsDataOptions(bool onLoading,
+            Option<Either<LocationFailure, CostResponse>> costData),
+  }) {
+    assert(initial != null);
+    assert(provinceDataOptions != null);
+    assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
+    return costsDataOptions(onLoading, costData);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result provinceDataOptions(bool onLoading,
+        Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
+    Result cityDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CityResponse>> dataCity),
+    Result costsDataOptions(
+        bool onLoading, Option<Either<LocationFailure, CostResponse>> costData),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (costsDataOptions != null) {
+      return costsDataOptions(onLoading, costData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result provinceDataOptions(_ProvinceDataOptions value),
+    @required Result cityDataOptions(_CityDataOptions value),
+    @required Result costsDataOptions(_CostsDataOptions value),
+  }) {
+    assert(initial != null);
+    assert(provinceDataOptions != null);
+    assert(cityDataOptions != null);
+    assert(costsDataOptions != null);
+    return costsDataOptions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result provinceDataOptions(_ProvinceDataOptions value),
+    Result cityDataOptions(_CityDataOptions value),
+    Result costsDataOptions(_CostsDataOptions value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (costsDataOptions != null) {
+      return costsDataOptions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CostsDataOptions implements LocationState {
+  factory _CostsDataOptions(
+          {@required bool onLoading,
+          @required Option<Either<LocationFailure, CostResponse>> costData}) =
+      _$_CostsDataOptions;
+
+  bool get onLoading;
+  Option<Either<LocationFailure, CostResponse>> get costData;
+  _$CostsDataOptionsCopyWith<_CostsDataOptions> get copyWith;
 }
