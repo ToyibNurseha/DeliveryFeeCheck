@@ -2,7 +2,7 @@
 
 An example of how to use BLOC pattern by GET [Rajaongkir](https://rajaongkir.com) REST API
 
-## Demo
+## Screenshot
 
 ![deliverycheck](https://user-images.githubusercontent.com/34620150/110238477-71f8d980-7f74-11eb-9aa1-6031e8c469f7.png)
 
